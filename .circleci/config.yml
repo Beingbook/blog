@@ -32,6 +32,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       # deploy it
-      - run: npm run publish
+      - run: npm run deploy
