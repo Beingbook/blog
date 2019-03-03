@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `FE`,
-    description: `개인 기술 블로그`,
+    title: `FE 블로그`,
+    description: `프론트엔드 엔지니어링, 웹 개발, 제품 설계 등에 대한 이야기를 합니다.`,
     author: `@Beingbook`,
   },
   plugins: [
@@ -18,15 +18,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Frontend Engineer Blog`,
+        short_name: `FE Blog`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff`,
+        theme_color: `#ab1142`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/tag-icon.png`, // This path is relative to the root of the site.
+        include_favicon: true,
       },
     },
     'gatsby-plugin-offline',
   ],
-}
+};
