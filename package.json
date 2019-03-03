@@ -8,7 +8,7 @@
     "gatsby:build": "gatsby build",
     "gatsby:serve": "gatsby serve",
     "push": "gh-pages -d public -b master -r 'git@github.com:Beingbook/Beingbook.github.io.git'",
-    "deploy": "run-s build push",
+    "deploy": "run-s gatsby:build push",
     "format": "prettier --write ./**/*.{js,ts,tsx,css,scss}",
     "format:watch": "onchange \"./**/*.{js,ts,tsx,css,scss}\" -- prettier --write {{changed}}",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
