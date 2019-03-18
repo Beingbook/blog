@@ -1,10 +1,18 @@
 module.exports = {
   siteMetadata: {
     title: `FE 블로그`,
-    description: `프론트엔드 엔지니어링, 웹 개발, 제품 설계 등에 대한 이야기를 합니다.`,
+    description: `프론트엔드 엔지니어링, 제품 설계 등에 대한 이야기를 합니다.`,
     author: `@Beingbook`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/posts`,
+        name: `posts`,
+      },
+    },
+    `gatsby-mdx`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
