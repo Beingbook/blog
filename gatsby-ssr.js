@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import JssProvider from 'react-jss/lib/JssProvider';
 import MuiProvider, { getPageContext } from './src/container/MuiProvider';
 
 const wrapRootElement = ({ element }) => {
