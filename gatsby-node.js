@@ -42,6 +42,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({
       node,
       getNode,
+      trailingSlash: false,
     });
 
     createNodeField({
