@@ -5,6 +5,7 @@ module.exports = {
     author: `@Beingbook`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

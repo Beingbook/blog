@@ -31,7 +31,7 @@ const IndexPage = () => {
       <br />
       <Link to="/test">Test</Link>
       <section>
-        {allMdx.edges.map(({ node: post }) => (
+        {allMdx.edges.map(({ node: post }: any) => (
           <article key={post.id}>
             <header>
               <h1>{post.frontmatter.title}</h1>
