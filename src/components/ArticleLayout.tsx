@@ -2,9 +2,9 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 // @ts-ignore
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
-import SEO from './SEO';
 import styled from 'styled-components';
-import Wrapper from './Wrapper';
+
+import SEO from './SEO';
 
 interface Props {
   data: {
@@ -43,7 +43,21 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
 };
 
 const Header = styled.header`
+  position: relative;
   height: 300px;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+`;
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
 
 export default ArticleLayout;
