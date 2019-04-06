@@ -8,7 +8,7 @@ const Layout: React.FC = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <main>{children}</main>
-      <Footer>© {new Date().getFullYear()} BaHwan Han</Footer>
+      <Footer>© 2019 {new Date().getFullYear()} BaHwan Han</Footer>
     </>
   </ThemeProvider>
 );
