@@ -26,7 +26,10 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <Link to="./test">Test</Link>
+      <br />
+      <br />
+      <br />
+      <Link to="/test">Test</Link>
       <section>
         {allMdx.edges.map(({ node: post }) => (
           <article key={post.id}>

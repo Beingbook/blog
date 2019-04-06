@@ -7,40 +7,35 @@ import {
   createMuiTheme,
   createGenerateClassName,
 } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+import blueGray from '@material-ui/core/colors/blueGrey';
+import indigo from '@material-ui/core/colors/indigo';
 
-class MuiProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.muiPageContext = getPageContext();
-  }
+const MuiProvider = ({ children }) => {
+  const [muiPageContext] = React.useState(getPageContext);
 
-  componentDidMount() {
+  React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
-  }
+  }, []);
 
-  render() {
-    return (
-      <JssProvider generateClassName={this.muiPageContext.generateClassName}>
-        {/* MuiThemeProvider makes the theme available down the React
+  return (
+    <JssProvider generateClassName={muiPageContext.generateClassName}>
+      {/* MuiThemeProvider makes the theme available down the React
               tree thanks to React context. */}
-        <MuiThemeProvider
-          theme={this.muiPageContext.theme}
-          sheetsManager={this.muiPageContext.sheetsManager}
-        >
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {this.props.children}
-        </MuiThemeProvider>
-      </JssProvider>
-    );
-  }
-}
+      <MuiThemeProvider
+        theme={muiPageContext.theme}
+        sheetsManager={muiPageContext.sheetsManager}
+      >
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        {children}
+      </MuiThemeProvider>
+    </JssProvider>
+  );
+};
 
 export default MuiProvider;
 
@@ -48,16 +43,9 @@ export default MuiProvider;
 // It's optional.
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      light: purple[300],
-      main: purple[500],
-      dark: purple[700],
-    },
-    secondary: {
-      light: green[300],
-      main: green[500],
-      dark: green[700],
-    },
+    type: 'dark',
+    primary: indigo,
+    secondary: blueGray,
   },
   typography: {
     useNextVariants: true,
