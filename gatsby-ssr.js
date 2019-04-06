@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import MuiProvider, { getPageContext } from './src/container/MuiProvider';
 
-const withRootElement = ({ element }) => {
+const wrapRootElement = ({ element }) => {
   return <MuiProvider>{element}</MuiProvider>;
 };
 
@@ -33,4 +33,4 @@ const replaceRenderer = ({
   ]);
 };
 
-export { withRootElement, replaceRenderer };
+export { wrapRootElement, replaceRenderer };
