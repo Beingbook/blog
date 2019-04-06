@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `FE 블로그`,
-    description: `프론트엔드 엔지니어링, 제품 설계 등에 대한 이야기를 합니다.`,
+    title: `Beingbook`,
+    description: `About frontend engineering.`,
     author: `@Beingbook`,
   },
   plugins: [

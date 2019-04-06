@@ -2,7 +2,7 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
 const IndexPage = () => {
   const { allMdx } = useStaticQuery(
@@ -26,6 +26,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <Link to="./test">Test</Link>
       <section>
         {allMdx.edges.map(({ node: post }) => (
           <article key={post.id}>
