@@ -6,6 +6,8 @@
 ## 개발
 
 ```sh
-$ npm i
-$ npm start
+# install deps
+$ yarn
+# dev!
+$ yarn start
 ```

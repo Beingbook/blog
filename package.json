@@ -4,9 +4,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "run-p format:watch gatsby:dev",
-    "gatsby:dev": "gatsby develop",
-    "gatsby:build": "gatsby build",
+    "gatsby:dev": "yarn clean && gatsby develop",
+    "gatsby:build": "yarn clean && gatsby build",
     "gatsby:serve": "gatsby serve",
+    "clean": "rimraf .cache public",
     "format": "prettier --write ./**/*.{js,mdx,ts,tsx,css,scss}",
     "format:watch": "onchange \"./**/*.{js,mdx,ts,tsx,css,scss}\" -- prettier --write {{changed}}",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
@@ -21,6 +22,7 @@
     "gatsby-image": "^2.0.37",
     "gatsby-mdx": "^0.4.4",
     "gatsby-plugin-emotion": "^4.0.6",
+    "gatsby-plugin-layout": "^1.0.14",
     "gatsby-plugin-manifest": "^2.0.26",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
@@ -35,6 +37,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
-    "react-jss": "^8.6.1"
+    "react-jss": "^8.6.1",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.2"
   }
 }

@@ -1,10 +1,18 @@
+require('ts-node').register();
+
 module.exports = {
   siteMetadata: {
     title: `Beingbook`,
     description: `About frontend engineering.`,
-    author: `@Beingbook`,
+    author: `BaHwan Han <beingbook@gmail.com>`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout`)
+      },
+    },
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -27,8 +35,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Frontend Engineer Blog`,
-        short_name: `FE Blog`,
+        name: `Beingbook Blog`,
+        short_name: `Beingbook`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#ab1142`,

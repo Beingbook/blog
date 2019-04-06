@@ -1,24 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 
 import './styles.css';
-import Header from '../Header';
 
 const Layout: React.FC = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={(data) => (
-      <>
-        <Header title={data.site.siteMetadata.title} />
         <div
           style={{
             margin: `0 auto`,
@@ -29,18 +13,9 @@ const Layout: React.FC = ({ children }) => (
         >
           <main>{children}</main>
           <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            © {new Date().getFullYear()} BaHwan Han
           </footer>
         </div>
-      </>
-    )}
-  />
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;
