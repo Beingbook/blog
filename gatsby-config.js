@@ -7,10 +7,11 @@ module.exports = {
     author: `BaHwan Han <beingbook@gmail.com>`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout`)
+        component: require.resolve(`./src/components/Layout`),
       },
     },
     `gatsby-plugin-typescript`,

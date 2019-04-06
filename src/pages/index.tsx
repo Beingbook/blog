@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
 import SEO from '../components/SEO';
+import Wrapper from '../components/Wrapper';
 
 const IndexPage = () => {
   const { allMdx } = useStaticQuery(
@@ -28,11 +29,8 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <br />
-      <br />
-      <br />
       <Link to="/test">Test</Link>
-      <section>
+      <Wrapper as="section">
         {allMdx.edges.map(({ node: post }: any) => (
           <article key={post.id}>
             <header>
@@ -43,7 +41,7 @@ const IndexPage = () => {
             <section>{post.excerpt}</section>
           </article>
         ))}
-      </section>
+      </Wrapper>
     </>
   );
 };
