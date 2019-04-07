@@ -14,7 +14,7 @@ const IndexPage = () => {
               id
               frontmatter {
                 title
-                category
+                tags
               }
               excerpt
               fields {
@@ -28,7 +28,7 @@ const IndexPage = () => {
   );
   return (
     <>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Home" />
       <Section>
         {allMdx.edges.map(({ node: post }: any) => (
           <article key={post.id}>
