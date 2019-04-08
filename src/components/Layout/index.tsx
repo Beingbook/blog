@@ -3,10 +3,11 @@ import styled, {
   ThemeProvider,
   createGlobalStyle,
   keyframes,
+  css,
 } from 'styled-components';
 
 import './styles.css';
-import theme from '../../styled/theme';
+import { darkTheme, whiteTheme } from '../../styled/theme';
 import Helmet from 'react-helmet';
 import { Body2 } from '../Typography';
 import { Location } from 'history';
@@ -15,32 +16,55 @@ import { spacing } from '../../styled/utils';
 interface Props {
   location: Location;
 }
-const Layout: React.FC<Props> = ({ children, location }) => (
-  <ThemeProvider theme={theme}>
-    <>
-      <GlobalStyle />
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500|Roboto:300,400,500&amp;subset=korean"
-          rel="stylesheet"
-        />
-      </Helmet>
-      <Flex>
-        <Content key={location.pathname}>{children}</Content>
-        <Footer>
-          <Wrapper>
-            <Body2>
-              © 2019 ~ Present,{' '}
-              <a href="mailto:beingbook@gmail.com">
-                한바환 (beingbook@gmail.com)
-              </a>
-            </Body2>
-          </Wrapper>
-        </Footer>
-      </Flex>
-    </>
-  </ThemeProvider>
-);
+const Layout: React.FC<Props> = ({ children, location }) => {
+  const [colorSchema, setColorSchema] = React.useState<'dark' | 'white'>(
+    'dark',
+  );
+  return (
+    <ThemeProvider theme={colorSchema === 'dark' ? darkTheme : whiteTheme}>
+      <>
+        <GlobalStyle />
+        <Helmet>
+          <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500|Roboto:300,400,500&amp;subset=korean"
+            rel="stylesheet"
+          />
+        </Helmet>
+        <Flex>
+          <nav>
+            <ul>
+              <li>Menu</li>
+              <li>Menu</li>
+              <li>Menu</li>
+            </ul>
+            <ul>
+              <li>
+                <input
+                  type="checkbox"
+                  checked={colorSchema === 'dark'}
+                  onChange={(event) =>
+                    setColorSchema(event.target.checked ? 'dark' : 'white')
+                  }
+                />
+              </li>
+            </ul>
+          </nav>
+          <Content key={location.pathname}>{children}</Content>
+          <Footer>
+            <Wrapper>
+              <Body2 as="div">
+                © 2019 ~ Present,{' '}
+                <a href="mailto:beingbook@gmail.com">
+                  한바환 (beingbook@gmail.com)
+                </a>
+              </Body2>
+            </Wrapper>
+          </Footer>
+        </Flex>
+      </>
+    </ThemeProvider>
+  );
+};
 
 const GlobalStyle = createGlobalStyle`
   html, body, #___gatsby {
@@ -51,6 +75,39 @@ const GlobalStyle = createGlobalStyle`
     > div {
       height: 100%;
     }
+  }
+
+  body {
+    ${({ theme }) => css`
+      background-color: ${theme.color.background};
+      color: ${theme.color.text};
+      transition: background-color 0.2s ${theme.easing.standard},
+        color 0.2s ${theme.easing.standard};
+    `}
+  }
+
+  a {
+    text-decoration: none;
+    ${({ theme }) => css`
+      color: ${theme.color.link};
+
+      &:focus {
+        color: ${theme.color.linkFocus};
+      }
+
+      &:hover {
+        color: ${theme.color.linkHover};
+      }
+
+      &:active {
+        color: ${theme.color.linkActive};
+      }
+
+      &:visited {
+        color: ${theme.color.linkVisited};
+      }
+      transition: color 0.2s ${theme.easing.standard};
+    `}
   }
 `;
 

@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-const theme: DefaultTheme = {
+const common: Omit<DefaultTheme, 'color'> = {
   maxContentWidth: 960,
   breakpoints: {
     phone: 480,
@@ -22,4 +22,32 @@ const theme: DefaultTheme = {
   },
 };
 
-export default theme;
+export const whiteTheme: DefaultTheme = {
+  ...common,
+  color: {
+    background: '#fff',
+    text: '#222',
+    primary: '#00695c',
+    secondary: '#c51162',
+    link: '#c51162',
+    linkActive: '#c51162',
+    linkFocus: '#c51162',
+    linkHover: '#c51162',
+    linkVisited: '#c51162',
+  },
+};
+
+export const darkTheme: DefaultTheme = {
+  ...common,
+  color: {
+    background: '#282c35',
+    text: '#fff',
+    primary: '#00695c',
+    secondary: '#d84315',
+    link: '#d84315',
+    linkActive: '#d84315',
+    linkFocus: '#d84315',
+    linkHover: '#d84315',
+    linkVisited: '#d84315',
+  },
+};
