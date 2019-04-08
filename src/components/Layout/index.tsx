@@ -14,9 +14,10 @@ import { Location } from 'history';
 import { spacing } from '../../styled/utils';
 
 interface Props {
-  location: Location;
+  location?: Location;
 }
-const Layout: React.FC<Props> = ({ children, location }) => {
+const Layout: React.FC<Props> = (props) => {
+  const { children, location } = props;
   const [colorSchema, setColorSchema] = React.useState<'dark' | 'white'>(
     'dark',
   );
@@ -43,13 +44,13 @@ const Layout: React.FC<Props> = ({ children, location }) => {
                   type="checkbox"
                   checked={colorSchema === 'dark'}
                   onChange={(event) =>
-                    setColorSchema(event.target.checked ? 'dark' : 'white')
+                    setColorSchema(event.target!.checked ? 'dark' : 'white')
                   }
                 />
               </li>
             </ul>
           </nav>
-          <Content key={location.pathname}>{children}</Content>
+          <Content key={location && location.pathname}>{children}</Content>
           <Footer>
             <Wrapper>
               <Body2 as="div">
