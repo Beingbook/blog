@@ -86,15 +86,15 @@ export const SubTitle2 = styled.div`
   ${makeTypography({ size: 14, tracking: 0.1, weight: fontWeights.medium })}
 `;
 
-export const Body1 = styled.div`
+export const Body1 = styled.p`
   ${makeTypography({ size: 16, tracking: -0.5, weight: fontWeights.regular })}
 `;
 
-export const Body2 = styled.div`
+export const Body2 = styled.p`
   ${makeTypography({ size: 14, tracking: 0.5, weight: fontWeights.regular })}
 `;
 
-export const ButtonText = styled.div`
+export const ButtonText = styled.span`
   ${makeTypography({
     size: 14,
     tracking: 1.25,
@@ -103,11 +103,11 @@ export const ButtonText = styled.div`
   })}
 `;
 
-export const Caption = styled.div`
+export const Caption = styled.span`
   ${makeTypography({ size: 12, tracking: 0.4, weight: fontWeights.regular })}
 `;
 
-export const Overline = styled.div`
+export const Overline = styled.span`
   ${makeTypography({
     size: 10,
     tracking: 1.5,
@@ -115,3 +115,13 @@ export const Overline = styled.div`
     upperCase: true,
   })}
 `;
+
+export const mdComponents = {
+  h1: Headline1,
+  h2: Headline2,
+  h3: Headline3,
+  h4: Headline4,
+  h5: Headline5,
+  h6: Headline6,
+  p: Body1,
+};

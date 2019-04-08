@@ -16,8 +16,10 @@ import {
   Headline6,
   Body1,
   ButtonText,
+  mdComponents,
 } from './Typography';
 import { spacing } from '../styled/utils';
+import Playground from './Playground';
 
 interface Props {
   data: {
@@ -36,7 +38,7 @@ interface Props {
 const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
   const { title, tags } = mdx.frontmatter;
   return (
-    <MDXProvider components={components}>
+    <MDXProvider components={mdComponents}>
       <SEO keywords={tags} />
       <Header>
         <Wrapper>
@@ -57,37 +59,17 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
   );
 };
 
-const components = {
-  h1: Headline1,
-  h2: Headline2,
-  h3: Headline3,
-  h4: Headline4,
-  h5: Headline5,
-  h6: Headline6,
-  p: Body1,
-};
+const mdx2 = `
+# Test
+
+test doc
+`;
 
 const Header = styled.header`
   padding: ${spacing(4)} ${spacing(2)};
-  position: relative;
-
-  &::before {
-    content: '';
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-
-    /* background-color: #ff9d2f; */
-  }
 `;
 
 const Wrapper = styled.div`
-  position: relative;
   margin: 0 auto;
   max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
