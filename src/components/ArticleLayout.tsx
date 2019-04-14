@@ -64,6 +64,17 @@ const Section = styled.section`
   ${Headline1}, ${Headline2}, ${Headline3}, ${Headline4}, ${Headline5}, ${Headline6} {
     margin-bottom: 0.65em;
   }
+
+  .gatsby-highlight {
+    margin-left: -${spacing(2)};
+    margin-right: -${spacing(2)};
+
+    pre {
+      @media (max-width: 768px) {
+        border-radius: 0;
+      }
+    }
+  }
 `;
 
 export default ArticleLayout;
