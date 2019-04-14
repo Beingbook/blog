@@ -7,12 +7,6 @@ module.exports = {
     author: `BaHwan Han <beingbook@gmail.com>`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        cacheId: 'offline-cache',
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
@@ -65,5 +59,6 @@ module.exports = {
         include_favicon: true,
       },
     },
+    `gatsby-plugin-offline`,
   ],
 };

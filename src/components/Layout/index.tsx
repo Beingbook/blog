@@ -149,6 +149,7 @@ const GlobalStyle = createGlobalStyle`
 const ToggleLabel = styled.label`
   position: relative;
   cursor: pointer;
+  padding: ${spacing(2)};
   display: inline-flex;
   align-items: center;
   transition: opacity 0.1s ${({ theme }) => theme.easing.standard};
@@ -237,8 +238,7 @@ const Content = styled.div`
 `;
 
 const Footer = styled.footer`
-  overflow: hidden;
-  padding: ${spacing(4)} ${spacing(2)};
+  padding: ${spacing(3)} ${spacing(2)};
 `;
 
 const Wrapper = styled.div`
@@ -246,9 +246,7 @@ const Wrapper = styled.div`
   max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
 
-const Header = styled.header`
-  padding: 0 ${spacing(2)};
-`;
+const Header = styled.header``;
 
 const NavWrapper = styled(Wrapper)`
   position: relative;

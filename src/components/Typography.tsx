@@ -2,8 +2,12 @@ import styled, { DefaultTheme, css } from 'styled-components';
 
 type StyledCSS = { theme: DefaultTheme };
 
-const getFontSize = (fontSize: number) => ({ theme }: StyledCSS) => {
-  return fontSize * theme.fontSize.conversionRatio + theme.fontSize.unit;
+const getFontSize = (fontSize: number, ratio: number = 1) => ({
+  theme,
+}: StyledCSS) => {
+  return (
+    fontSize * theme.fontSize.conversionRatio * ratio + theme.fontSize.unit
+  );
 };
 
 const getLetterSpacing = (fontSize: number, tracking: number) => ({
@@ -30,7 +34,7 @@ const makeTypography = (args: MakeTypography) => {
     font-family: 'Noto Sans KR', Roboto, 'Malgun Gothic', NanumGothic,
       'Segoe UI', sans-serif;
     font-size: ${getFontSize(size)};
-    line-height: ${getFontSize(size)};
+    line-height: ${getFontSize(size, 1.4)};
     letter-spacing: ${getLetterSpacing(size, tracking)};
     font-weight: ${weight};
     ${upperCase &&
@@ -89,7 +93,7 @@ export const SubTitle2 = styled.div`
 `;
 
 export const Body1 = styled.p`
-  ${makeTypography({ size: 16, tracking: -0.5, weight: fontWeights.regular })}
+  ${makeTypography({ size: 16, tracking: 0, weight: fontWeights.regular })}
 `;
 
 export const Body2 = styled.p`
