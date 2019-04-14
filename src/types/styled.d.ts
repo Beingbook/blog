@@ -1,7 +1,5 @@
-// import original module declarations
 import 'styled-components';
 
-// and extend them!
 declare module 'styled-components' {
   import { BaseThemedCssFunction } from 'styled-components';
 
@@ -24,6 +22,17 @@ declare module 'styled-components' {
     spacing: {
       container: number;
       component: number;
+    };
+    color: {
+      background: string;
+      text: string;
+      link: string;
+      linkHover: string;
+      linkActive: string;
+      linkFocus: string;
+      linkVisited: string;
+      primary: string;
+      secondary: string;
     };
   }
 }
