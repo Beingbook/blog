@@ -189,6 +189,10 @@ const MenuLink = styled(Link)`
   min-width: ${spacing(6)};
   min-height: ${spacing(4)};
   box-sizing: border-box;
+
+  span {
+    display: flex;
+  }
 `;
 
 const Menu = styled.ul`
