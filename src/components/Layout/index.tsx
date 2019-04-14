@@ -239,6 +239,11 @@ const Content = styled.div`
 
 const Footer = styled.footer`
   padding: ${spacing(3)} ${spacing(2)};
+
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 
 const Wrapper = styled.div`
