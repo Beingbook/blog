@@ -44,6 +44,8 @@ const commonTitleCSS = css`
   &:lang(ko) {
     word-break: keep-all;
   }
+  margin: 0;
+  padding: 0;
 `;
 
 export const Headline1 = styled.h1`
@@ -78,7 +80,7 @@ export const Headline6 = styled.h6`
 
 export const SubTitle1 = styled.div`
   ${commonTitleCSS}
-  ${makeTypography({ size: 16, tracking: 0.15, weight: fontWeights.regular })}
+  ${makeTypography({ size: 16, tracking: 0.15, weight: fontWeights.medium })}
 `;
 
 export const SubTitle2 = styled.div`

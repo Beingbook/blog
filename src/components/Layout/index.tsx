@@ -15,6 +15,7 @@ import { darkTheme, whiteTheme } from '../../styled/theme';
 import { Body2, ButtonText } from '../Typography';
 import { spacing, halfSpacing } from '../../styled/utils';
 import useInputState from '../../hooks/useInputState';
+import HomeIcon from './HomeIcon';
 
 interface Props {
   location?: Location;
@@ -39,23 +40,37 @@ const Layout: React.FC<Props> = (props) => {
               <NavWrapper>
                 <PrimaryMenu>
                   <li>
-                    <Link to="/">
-                      <ButtonText>홈</ButtonText>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/me">
-                      <ButtonText>소개</ButtonText>
-                    </Link>
+                    <MenuLink to="/">
+                      <ButtonText aria-label="홈 화면으로 돌아가기">
+                        <HomeIcon />
+                      </ButtonText>
+                    </MenuLink>
                   </li>
                 </PrimaryMenu>
                 <Menu>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={preferDarkColor}
-                      onChange={preferDarkColorHandler}
-                    />
+                  <li role="presentation">
+                    <ToggleLabel
+                      role="button"
+                      aria-label="어두운 테마 사용"
+                      aria-pressed={preferDarkColor}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={preferDarkColor}
+                        onChange={preferDarkColorHandler}
+                      />
+                      <ButtonText>
+                        {preferDarkColor ? '어스름' : '빛벼림'}
+                      </ButtonText>
+                      <img
+                        src={
+                          preferDarkColor
+                            ? require('./images/moon.svg')
+                            : require('./images/sun.svg')
+                        }
+                        role="presentation"
+                      />
+                    </ToggleLabel>
                   </li>
                 </Menu>
               </NavWrapper>
@@ -98,6 +113,14 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
 
+  svg {
+    fill: ${({ theme }) => theme.color.text};
+    color: ${({ theme }) => theme.color.text};
+    transition:
+      fill 0.2s ${({ theme }) => theme.easing.standard},
+      color 0.2s ${({ theme }) => theme.easing.standard};
+  }
+
   a {
     text-decoration: none;
     ${({ theme }) => css`
@@ -123,18 +146,65 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const ToggleLabel = styled.label`
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.1s ${({ theme }) => theme.easing.standard};
+  touch-action: manipulation;
+  user-select: none;
+
+  img {
+    margin: 0;
+    margin-left: ${halfSpacing(2)};
+    padding: 0;
+    transform: rotate(0deg);
+    transition: transform 0.1s ${({ theme }) => theme.easing.standard};
+  }
+
+  &:hover {
+    img {
+      transform: rotate(20deg);
+    }
+  }
+
+  input {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+
+    &:focus ~ img {
+      transform: rotate(20deg);
+    }
+  }
+`;
+
+const MenuLink = styled(Link)`
+  padding: ${spacing(2)};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: ${spacing(6)};
+  min-height: ${spacing(4)};
+  box-sizing: border-box;
+`;
+
 const Menu = styled.ul`
   position: relative;
 
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 
   li {
     display: block;
+    margin: 0;
+    padding: 0;
 
     &:not(:first-child) {
-      margin-left: ${halfSpacing(6)};
+      margin-left: ${halfSpacing(2)};
     }
   }
 `;
@@ -151,7 +221,7 @@ const Flex = styled.div`
 
 const slideIn = keyframes`
   from {
-    transform: translateY(10%);
+    transform: translateY(30%);
     opacity: 0;
   }
   to {
@@ -162,7 +232,8 @@ const slideIn = keyframes`
 
 const Content = styled.div`
   flex: 1 1 auto;
-  animation: ${slideIn} 0.364s cubic-bezier(0.1, 0.9, 0.2, 1);
+  padding: ${spacing(2)};
+  animation: ${slideIn} 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
 `;
 
 const Footer = styled.footer`
@@ -176,7 +247,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  padding: ${spacing(4)} ${spacing(2)};
+  padding: 0 ${spacing(2)};
 `;
 
 const NavWrapper = styled(Wrapper)`

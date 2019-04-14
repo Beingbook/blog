@@ -3,11 +3,19 @@ import { graphql } from 'gatsby';
 // @ts-ignore
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 // @ts-ignore
-import { MDXProvider } from '@mdx-js/tag';
+import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 import SEO from './SEO';
-import { Headline1, ButtonText, mdComponents } from './Typography';
+import {
+  Headline1,
+  Headline2,
+  Headline3,
+  Headline4,
+  Headline5,
+  Headline6,
+  mdComponents,
+} from './Typography';
 import { spacing } from '../styled/utils';
 
 interface Props {
@@ -32,29 +40,30 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
       <Header>
         <Wrapper>
           <Headline1>{title}</Headline1>
-          <ul>
-            {tags.map((tag) => (
-              <li key={tag}>
-                <ButtonText>{tag}</ButtonText>
-              </li>
-            ))}
-          </ul>
         </Wrapper>
       </Header>
-      <Wrapper as="section">
-        <MDXRenderer className="test">{mdx.code.body}</MDXRenderer>
-      </Wrapper>
+      <Section>
+        <Wrapper>
+          <MDXRenderer>{mdx.code.body}</MDXRenderer>
+        </Wrapper>
+      </Section>
     </MDXProvider>
   );
 };
 
 const Header = styled.header`
-  padding: ${spacing(4)} ${spacing(2)};
+  padding: ${spacing(4)} 0;
 `;
 
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: ${({ theme }) => theme.maxContentWidth}px;
+`;
+
+const Section = styled.section`
+  ${Headline1}, ${Headline2}, ${Headline3}, ${Headline4}, ${Headline5}, ${Headline6} {
+    margin-bottom: 0.65em;
+  }
 `;
 
 export default ArticleLayout;
