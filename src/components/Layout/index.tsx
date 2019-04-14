@@ -28,7 +28,7 @@ const Layout: React.FC<Props> = (props) => {
     <ThemeProvider theme={preferDarkColor ? darkTheme : whiteTheme}>
       <>
         <GlobalStyle />
-        <Helmet>
+        <Helmet htmlAttributes={{ lang: 'ko' }}>
           <link
             href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500|Roboto:300,400,500&amp;subset=korean"
             rel="stylesheet"
