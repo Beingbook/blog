@@ -1,8 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import styled from 'styled-components';
 
 import SEO from '../components/SEO';
-import styled from 'styled-components';
+import { Headline1, ButtonText } from '../components/Typography';
 
 const IndexPage = () => {
   const { allMdx } = useStaticQuery(
@@ -33,9 +34,16 @@ const IndexPage = () => {
         {allMdx.edges.map(({ node: post }: any) => (
           <article key={post.id}>
             <header>
-              <h1>
+              <Headline1>
                 <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-              </h1>
+              </Headline1>
+              <ul>
+                {post.frontmatter.tags.map((tag: any) => (
+                  <li>
+                    <ButtonText>{tag}</ButtonText>
+                  </li>
+                ))}
+              </ul>
             </header>
             <section>{post.excerpt}</section>
           </article>

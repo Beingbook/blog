@@ -5,24 +5,26 @@ import styled, {
   keyframes,
   css,
 } from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { Location } from 'history';
+import { Link } from 'gatsby';
 
 import './styles.css';
+
 import { darkTheme, whiteTheme } from '../../styled/theme';
-import Helmet from 'react-helmet';
-import { Body2 } from '../Typography';
-import { Location } from 'history';
-import { spacing } from '../../styled/utils';
+import { Body2, ButtonText } from '../Typography';
+import { spacing, halfSpacing } from '../../styled/utils';
+import useInputState from '../../hooks/useInputState';
 
 interface Props {
   location?: Location;
 }
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
-  const [colorSchema, setColorSchema] = React.useState<'dark' | 'white'>(
-    'dark',
-  );
+  const [preferDarkColor, preferDarkColorHandler] = useInputState(false);
+  React.useEffect(() => void 0, []);
   return (
-    <ThemeProvider theme={colorSchema === 'dark' ? darkTheme : whiteTheme}>
+    <ThemeProvider theme={preferDarkColor ? darkTheme : whiteTheme}>
       <>
         <GlobalStyle />
         <Helmet>
@@ -32,24 +34,33 @@ const Layout: React.FC<Props> = (props) => {
           />
         </Helmet>
         <Flex>
-          <nav>
-            <ul>
-              <li>Menu</li>
-              <li>Menu</li>
-              <li>Menu</li>
-            </ul>
-            <ul>
-              <li>
-                <input
-                  type="checkbox"
-                  checked={colorSchema === 'dark'}
-                  onChange={(event) =>
-                    setColorSchema(event.target!.checked ? 'dark' : 'white')
-                  }
-                />
-              </li>
-            </ul>
-          </nav>
+          <Header>
+            <nav>
+              <NavWrapper>
+                <PrimaryMenu>
+                  <li>
+                    <Link to="/">
+                      <ButtonText>홈</ButtonText>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/me">
+                      <ButtonText>소개</ButtonText>
+                    </Link>
+                  </li>
+                </PrimaryMenu>
+                <Menu>
+                  <li>
+                    <input
+                      type="checkbox"
+                      checked={preferDarkColor}
+                      onChange={preferDarkColorHandler}
+                    />
+                  </li>
+                </Menu>
+              </NavWrapper>
+            </nav>
+          </Header>
           <Content key={location && location.pathname}>{children}</Content>
           <Footer>
             <Wrapper>
@@ -112,6 +123,26 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Menu = styled.ul`
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  li {
+    display: block;
+
+    &:not(:first-child) {
+      margin-left: ${halfSpacing(6)};
+    }
+  }
+`;
+
+const PrimaryMenu = styled(Menu)`
+  flex: 1 1 auto;
+`;
+
 const Flex = styled.div`
   height: 100%;
   display: flex;
@@ -120,11 +151,11 @@ const Flex = styled.div`
 
 const slideIn = keyframes`
   from {
-    transform: translateX(-10%);
+    transform: translateY(10%);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 `;
@@ -142,6 +173,15 @@ const Footer = styled.footer`
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: ${({ theme }) => theme.maxContentWidth}px;
+`;
+
+const Header = styled.header`
+  padding: ${spacing(4)} ${spacing(2)};
+`;
+
+const NavWrapper = styled(Wrapper)`
+  position: relative;
+  display: flex;
 `;
 
 export default Layout;

@@ -7,19 +7,8 @@ import { MDXProvider } from '@mdx-js/tag';
 import styled from 'styled-components';
 
 import SEO from './SEO';
-import {
-  Headline3,
-  Headline1,
-  Headline2,
-  Headline4,
-  Headline5,
-  Headline6,
-  Body1,
-  ButtonText,
-  mdComponents,
-} from './Typography';
+import { Headline1, ButtonText, mdComponents } from './Typography';
 import { spacing } from '../styled/utils';
-import Playground from './Playground';
 
 interface Props {
   data: {
@@ -58,12 +47,6 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
     </MDXProvider>
   );
 };
-
-const mdx2 = `
-# Test
-
-test doc
-`;
 
 const Header = styled.header`
   padding: ${spacing(4)} ${spacing(2)};
