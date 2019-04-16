@@ -72,14 +72,12 @@ const Main = styled.main`
     margin-bottom: 0.65em;
   }
 
-  .gatsby-highlight {
+  .prism-code {
     margin-left: -${spacing(2)};
     margin-right: -${spacing(2)};
 
-    pre {
-      @media (max-width: 768px) {
-        border-radius: 0;
-      }
+    @media (max-width: 768px) {
+      border-radius: 0;
     }
   }
 `;

@@ -19,10 +19,7 @@ const CodeBlock: React.FC<Props> = ({ children, className = '' }) => {
       language={language as any}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre
-          className={[className, 'gatsby-highlight'].join(' ')}
-          style={{ ...style, padding: '20px' }}
-        >
+        <pre className={className} style={{ ...style, padding: '20px' }}>
           {tokens.map(
             (line, i) =>
               tokens[i + 1] && (
