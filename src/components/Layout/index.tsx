@@ -16,6 +16,7 @@ import { Body2, ButtonText } from '../Typography';
 import { spacing, halfSpacing } from '../../styled/utils';
 import useInputState from '../../hooks/useInputState';
 import HomeIcon from './HomeIcon';
+import { container } from '../../styled/common';
 
 interface Props {
   location?: Location;
@@ -234,11 +235,13 @@ const slideIn = keyframes`
 const Content = styled.main`
   flex: 1 1 auto;
   padding: ${spacing(2)};
+  ${container};
   animation: ${slideIn} 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
 `;
 
 const Footer = styled.footer`
-  padding: ${spacing(3)} ${spacing(2)};
+  padding: ${spacing(3)} 0;
+  ${container};
   text-align: right;
 
   a {
@@ -247,7 +250,10 @@ const Footer = styled.footer`
   }
 `;
 
-const Header = styled.header``;
+const Header = styled.header`
+  ${container};
+  padding: 0;
+`;
 
 const Nav = styled.div`
   display: flex;

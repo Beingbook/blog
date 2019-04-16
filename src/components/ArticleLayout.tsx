@@ -73,10 +73,10 @@ const Main = styled.main`
   }
 
   .prism-code {
-    margin-left: -${spacing(2)};
-    margin-right: -${spacing(2)};
+    margin-left: -${spacing(3)};
+    margin-right: -${spacing(3)};
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
       border-radius: 0;
     }
   }
