@@ -17,8 +17,8 @@ const IndexPage = () => {
               frontmatter {
                 title
                 createdAt
+                description
               }
-              excerpt
               fields {
                 slug
               }
@@ -43,7 +43,7 @@ const IndexPage = () => {
                 </Body2>
               </CardHeader>
               <CardBody>
-                <Body1>{post.excerpt}</Body1>
+                <Body1>{post.frontmatter.description}</Body1>
               </CardBody>
             </Card>
           );
@@ -68,8 +68,6 @@ const CardHeader = styled.header`
   }
 `;
 
-const CardBody = styled.section``;
-
-const CardActions = styled.div``;
+const CardBody = styled.main``;
 
 export default IndexPage;

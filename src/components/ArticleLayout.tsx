@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 // @ts-ignore
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-mdx';
 // @ts-ignore
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
@@ -17,6 +17,7 @@ import {
   mdComponents,
 } from './Typography';
 import { spacing } from '../styled/utils';
+import CodeBlock from './CodeBlock';
 
 interface Props {
   data: {
@@ -24,7 +25,7 @@ interface Props {
       id: string;
       frontmatter: {
         title: string;
-        tags: string[];
+        description: string;
       };
       code: {
         body: string;
@@ -33,20 +34,26 @@ interface Props {
   };
 }
 const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
-  const { title, tags } = mdx.frontmatter;
+  const { title, description } = mdx.frontmatter;
   return (
-    <MDXProvider components={mdComponents}>
-      <SEO keywords={tags} />
+    <MDXProvider
+      components={{
+        ...mdComponents,
+        pre: (props: any) => <React.Fragment {...props} />,
+        code: CodeBlock,
+      }}
+    >
+      <SEO description={description} />
       <Header>
         <Wrapper>
           <Headline1>{title}</Headline1>
         </Wrapper>
       </Header>
-      <Section>
+      <Main>
         <Wrapper>
           <MDXRenderer>{mdx.code.body}</MDXRenderer>
         </Wrapper>
-      </Section>
+      </Main>
     </MDXProvider>
   );
 };
@@ -60,7 +67,7 @@ const Wrapper = styled.div`
   max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
 
-const Section = styled.section`
+const Main = styled.main`
   ${Headline1}, ${Headline2}, ${Headline3}, ${Headline4}, ${Headline5}, ${Headline6} {
     margin-bottom: 0.65em;
   }
@@ -85,7 +92,7 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
-        tags
+        description
       }
       code {
         body

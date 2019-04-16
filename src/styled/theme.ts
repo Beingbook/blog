@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 const common: Omit<DefaultTheme, 'color'> = {
-  maxContentWidth: 760,
+  maxContentWidth: 640,
   breakpoints: {
     phone: 480,
     tablet: 768,

@@ -23,7 +23,7 @@ interface Props {
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
   const [preferDarkColor, preferDarkColorHandler] = useInputState(false);
-  React.useEffect(() => void 0, []);
+  React.useEffect(() => void 0, [preferDarkColor]);
   return (
     <ThemeProvider theme={preferDarkColor ? darkTheme : whiteTheme}>
       <>
@@ -36,56 +36,52 @@ const Layout: React.FC<Props> = (props) => {
         </Helmet>
         <Flex>
           <Header>
-            <nav>
-              <NavWrapper>
-                <PrimaryMenu>
-                  <li>
-                    <MenuLink to="/">
-                      <ButtonText aria-label="홈 화면으로 돌아가기">
-                        <HomeIcon />
-                      </ButtonText>
-                    </MenuLink>
-                  </li>
-                </PrimaryMenu>
-                <Menu>
-                  <li role="presentation">
-                    <ToggleLabel
-                      role="button"
-                      aria-label="어두운 테마 사용"
-                      aria-pressed={preferDarkColor}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={preferDarkColor}
-                        onChange={preferDarkColorHandler}
-                      />
-                      <ButtonText>
-                        {preferDarkColor ? '어스름' : '빛벼림'}
-                      </ButtonText>
-                      <img
-                        src={
-                          preferDarkColor
-                            ? require('./images/moon.svg')
-                            : require('./images/sun.svg')
-                        }
-                        role="presentation"
-                      />
-                    </ToggleLabel>
-                  </li>
-                </Menu>
-              </NavWrapper>
-            </nav>
+            <Nav>
+              <PrimaryMenu>
+                <li>
+                  <MenuLink to="/">
+                    <ButtonText aria-label="홈 화면으로 돌아가기">
+                      <HomeIcon />
+                    </ButtonText>
+                  </MenuLink>
+                </li>
+              </PrimaryMenu>
+              <Menu>
+                <li role="presentation">
+                  <ToggleLabel
+                    role="button"
+                    aria-label="어두운 테마 사용"
+                    aria-pressed={preferDarkColor}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={preferDarkColor}
+                      onChange={preferDarkColorHandler}
+                    />
+                    <ButtonText>
+                      {preferDarkColor ? '어스름' : '빛벼림'}
+                    </ButtonText>
+                    <img
+                      src={
+                        preferDarkColor
+                          ? require('./images/moon.svg')
+                          : require('./images/sun.svg')
+                      }
+                      role="presentation"
+                    />
+                  </ToggleLabel>
+                </li>
+              </Menu>
+            </Nav>
           </Header>
           <Content key={location && location.pathname}>{children}</Content>
           <Footer>
-            <Wrapper>
-              <Body2 as="div">
-                © 2019 ~ Present,{' '}
-                <a href="mailto:beingbook@gmail.com">
-                  한바환 (beingbook@gmail.com)
-                </a>
-              </Body2>
-            </Wrapper>
+            <Body2 as="div">
+              © 2019 ~ Present,{' '}
+              <a href="mailto:beingbook@gmail.com">
+                한바환 (beingbook@gmail.com)
+              </a>
+            </Body2>
           </Footer>
         </Flex>
       </>
@@ -235,7 +231,7 @@ const slideIn = keyframes`
   }
 `;
 
-const Content = styled.div`
+const Content = styled.main`
   flex: 1 1 auto;
   padding: ${spacing(2)};
   animation: ${slideIn} 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
@@ -243,6 +239,7 @@ const Content = styled.div`
 
 const Footer = styled.footer`
   padding: ${spacing(3)} ${spacing(2)};
+  text-align: right;
 
   a {
     white-space: nowrap;
@@ -250,15 +247,9 @@ const Footer = styled.footer`
   }
 `;
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: ${({ theme }) => theme.maxContentWidth}px;
-`;
-
 const Header = styled.header``;
 
-const NavWrapper = styled(Wrapper)`
-  position: relative;
+const Nav = styled.div`
   display: flex;
 `;
 

@@ -18,12 +18,6 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              inlineCodeMarker: '÷',
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1035,
@@ -31,6 +25,12 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-prismjs`],
       },
     },
     `gatsby-transformer-sharp`,
