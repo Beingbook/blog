@@ -258,8 +258,10 @@ const Footer = styled.footer`
 `;
 
 const Header = styled.header`
-  margin: 0 ${spacing(-2)};
-  ${container};
+  @media (min-width: 860px) {
+    padding-left: calc(50vw - 400px - ${spacing(2)});
+    padding-right: calc(50vw - 400px - ${spacing(2)});
+  }
 `;
 
 const Nav = styled.div`
