@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-mdx';
 // @ts-ignore
 import { MDXProvider } from '@mdx-js/react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import SEO from './SEO';
 import {
@@ -44,6 +44,7 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
       }}
     >
       <SEO description={description} />
+      <GlobalStyle />
       <Header>
         <Wrapper>
           <Headline1>{title}</Headline1>
@@ -57,6 +58,26 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
     </MDXProvider>
   );
 };
+
+const GlobalStyle = createGlobalStyle`
+  .highlight-code-line {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-right: ${spacing(-2)};
+    margin-left: ${spacing(-2)};
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid ${({ theme }) => theme.color.primary};
+
+    &::after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  }
+`;
 
 const Header = styled.header`
   padding: ${spacing(4)} 0;
