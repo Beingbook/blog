@@ -5,7 +5,7 @@ type ChangeEvent = React.ChangeEvent<
 >;
 
 const useInputState = <T>(
-  initialState: T,
+  initialState: T | (() => T),
 ): [
   T,
   (event: ChangeEvent) => void,

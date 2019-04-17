@@ -23,8 +23,15 @@ interface Props {
 }
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
-  const [preferDarkColor, preferDarkColorHandler] = useInputState(false);
-  React.useEffect(() => void 0, [preferDarkColor]);
+  const [preferDarkColor, preferDarkColorHandler] = useInputState(() => {
+    if (localStorage) {
+      return !!JSON.parse(localStorage.getItem('preferDarkColor') || 'false');
+    }
+    return false;
+  });
+  React.useEffect(() => {
+    localStorage.setItem('preferDarkColor', JSON.stringify(preferDarkColor));
+  }, [preferDarkColor]);
   return (
     <ThemeProvider theme={preferDarkColor ? darkTheme : whiteTheme}>
       <>
@@ -251,8 +258,8 @@ const Footer = styled.footer`
 `;
 
 const Header = styled.header`
+  margin: 0 ${spacing(-2)};
   ${container};
-  padding: 0;
 `;
 
 const Nav = styled.div`

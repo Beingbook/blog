@@ -64,7 +64,6 @@ const Header = styled.header`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
 
 const Main = styled.main`
@@ -73,9 +72,6 @@ const Main = styled.main`
   }
 
   .prism-code {
-    margin-left: -${spacing(3)};
-    margin-right: -${spacing(3)};
-
     @media (max-width: 860px) {
       border-radius: 0;
     }

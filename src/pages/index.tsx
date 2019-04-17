@@ -55,7 +55,6 @@ const IndexPage = () => {
 
 const Section = styled.section`
   margin: ${spacing(4)} auto;
-  max-width: ${({ theme }) => theme.maxContentWidth}px;
 `;
 
 const Card = styled.article``;
