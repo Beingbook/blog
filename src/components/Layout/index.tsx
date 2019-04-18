@@ -24,7 +24,7 @@ interface Props {
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
   const [preferDarkColor, preferDarkColorHandler] = useInputState(() => {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       return !!JSON.parse(localStorage.getItem('preferDarkColor') || 'false');
     }
     return false;
