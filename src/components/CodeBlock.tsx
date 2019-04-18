@@ -25,7 +25,6 @@ const CodeBlock: React.FC<Props> = ({
         {} as any,
       )
     : {};
-  console.log(hightlightLines);
 
   return (
     <Highlight
