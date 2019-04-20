@@ -70,6 +70,7 @@ const Layout: React.FC<Props> = (props) => {
                       {preferDarkColor ? '어스름' : '빛벼림'}
                     </ButtonText>
                     <img
+                      key={preferDarkColor ? 'moon' : 'sun'}
                       src={
                         preferDarkColor
                           ? require('./images/moon.svg')
