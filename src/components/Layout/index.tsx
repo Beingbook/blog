@@ -17,6 +17,8 @@ import { spacing, halfSpacing } from '../../styled/utils';
 import useInputState from '../../hooks/useInputState';
 import HomeIcon from './HomeIcon';
 import { container } from '../../styled/common';
+import MoonIcon from './MoonIcon';
+import SunIcon from './SunIcon';
 
 interface Props {
   location?: Location;
@@ -55,12 +57,8 @@ const Layout: React.FC<Props> = (props) => {
                 </li>
               </PrimaryMenu>
               <Menu>
-                <li role="presentation">
-                  <ToggleLabel
-                    role="button"
-                    aria-label="어두운 테마 사용"
-                    aria-pressed={preferDarkColor}
-                  >
+                <li role="presentation" aria-hidden>
+                  <ToggleLabel role="button">
                     <input
                       type="checkbox"
                       checked={preferDarkColor}
@@ -69,15 +67,7 @@ const Layout: React.FC<Props> = (props) => {
                     <ButtonText>
                       {preferDarkColor ? '어스름' : '빛벼림'}
                     </ButtonText>
-                    <img
-                      key={preferDarkColor ? 'moon' : 'sun'}
-                      src={
-                        preferDarkColor
-                          ? require('./images/moon.svg')
-                          : require('./images/sun.svg')
-                      }
-                      role="presentation"
-                    />
+                    {preferDarkColor ? <MoonIcon /> : <SunIcon />}
                   </ToggleLabel>
                 </li>
               </Menu>
@@ -161,7 +151,7 @@ const ToggleLabel = styled.label`
   touch-action: manipulation;
   user-select: none;
 
-  img {
+  svg {
     margin: 0;
     margin-left: ${halfSpacing(2)};
     padding: 0;
