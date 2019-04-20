@@ -26,12 +26,19 @@ interface Props {
 }
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
-  const [preferDarkColor, preferDarkColorHandler] = useInputState(() => {
+  const [
+    preferDarkColor,
+    preferDarkColorHandler,
+    setPreferredColor,
+  ] = useInputState<boolean | null>(null);
+  React.useEffect(() => {
     if (typeof localStorage !== 'undefined') {
-      return !!JSON.parse(localStorage.getItem('preferDarkColor') || 'false');
+      const cache = localStorage.getItem('preferDarkColor');
+      if (cache) {
+        setPreferredColor(JSON.parse(cache));
+      }
     }
-    return false;
-  });
+  }, []);
   React.useEffect(() => {
     localStorage.setItem('preferDarkColor', JSON.stringify(preferDarkColor));
   }, [preferDarkColor]);
@@ -53,19 +60,21 @@ const Layout: React.FC<Props> = (props) => {
                 </li>
               </PrimaryMenu>
               <Menu>
-                <li role="presentation" aria-hidden>
-                  <ToggleLabel role="button">
-                    <input
-                      type="checkbox"
-                      checked={preferDarkColor}
-                      onChange={preferDarkColorHandler}
-                    />
-                    <ButtonText>
-                      {preferDarkColor ? '어스름' : '빛벼림'}
-                    </ButtonText>
-                    {preferDarkColor ? <MoonIcon /> : <SunIcon />}
-                  </ToggleLabel>
-                </li>
+                {preferDarkColor !== null && (
+                  <li role="presentation" aria-hidden>
+                    <ToggleLabel role="button">
+                      <input
+                        type="checkbox"
+                        checked={preferDarkColor}
+                        onChange={preferDarkColorHandler}
+                      />
+                      <ButtonText>
+                        {preferDarkColor ? '어스름' : '빛벼림'}
+                      </ButtonText>
+                      {preferDarkColor ? <MoonIcon /> : <SunIcon />}
+                    </ToggleLabel>
+                  </li>
+                )}
               </Menu>
             </Nav>
           </Header>
