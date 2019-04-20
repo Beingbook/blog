@@ -34,7 +34,14 @@ const CodeBlock: React.FC<Props> = ({
       language={language as any}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: 16 }}>
+        <pre
+          className={className}
+          style={{
+            ...style,
+            padding: 16,
+            marginBottom: '1.45rem',
+          }}
+        >
           <code
             style={{
               fontSize: 'inherit',
@@ -51,7 +58,7 @@ const CodeBlock: React.FC<Props> = ({
                     {...getLineProps({
                       line,
                       key: i,
-                      className: hightlightLines[i]
+                      className: hightlightLines[i + 1]
                         ? 'highlight-code-line'
                         : '',
                     })}

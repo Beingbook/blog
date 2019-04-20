@@ -41,7 +41,7 @@ export const darkTheme: DefaultTheme = {
   ...common,
   color: {
     background: '#282c35',
-    text: '#fff',
+    text: 'rgba(255, 255, 255, 0.88)',
     primary: '#00695c',
     secondary: '#d84315',
     link: '#F3A68C',

@@ -10,7 +10,10 @@ const IndexPage = () => {
   const { allMdx } = useStaticQuery(
     graphql`
       query AllPosts {
-        allMdx {
+        allMdx(
+          sort: { order: DESC, fields: frontmatter___createdAt }
+          filter: { frontmatter: { status: { eq: "published" } } }
+        ) {
           edges {
             node {
               id

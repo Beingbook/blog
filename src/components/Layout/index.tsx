@@ -8,6 +8,7 @@ import styled, {
 import { Helmet } from 'react-helmet';
 import { Location } from 'history';
 import { Link } from 'gatsby';
+import SEO from '../SEO';
 
 import './fonts.css';
 import './styles.css';
@@ -34,8 +35,11 @@ const Layout: React.FC<Props> = (props) => {
   React.useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       const cache = localStorage.getItem('preferDarkColor');
-      if (cache) {
-        setPreferredColor(JSON.parse(cache));
+      const value = cache ? JSON.parse(cache) : null;
+      if (typeof value === 'boolean') {
+        setPreferredColor(value);
+      } else {
+        setPreferredColor(false);
       }
     }
   }, []);
@@ -47,6 +51,7 @@ const Layout: React.FC<Props> = (props) => {
       <>
         <GlobalStyle />
         <Helmet htmlAttributes={{ lang: 'ko' }} />
+        <SEO title="Beingbook's blog" />
         <Flex>
           <Header>
             <Nav>

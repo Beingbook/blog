@@ -94,6 +94,11 @@ export const SubTitle2 = styled.div`
 
 export const Body1 = styled.p`
   ${makeTypography({ size: 16, tracking: 0, weight: fontWeights.regular })}
+  line-height: 1.5rem;
+
+  strong {
+    font-weight: 500;
+  }
 `;
 
 export const Body2 = styled.p`
