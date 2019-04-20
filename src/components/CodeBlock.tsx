@@ -40,6 +40,7 @@ const CodeBlock: React.FC<Props> = ({
               fontSize: 'inherit',
               float: 'left',
               minWidth: '100%',
+              lineHeight: '1.5rem',
             }}
           >
             {tokens.map(
