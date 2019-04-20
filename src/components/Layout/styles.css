@@ -1,5 +1,6 @@
 html {
-  font-family: sans-serif;
+  font-family: 'Noto Sans KR', Roboto, 'Malgun Gothic', NanumGothic, 'Segoe UI',
+    sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
