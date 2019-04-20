@@ -39,6 +39,7 @@ const CodeBlock: React.FC<Props> = ({
             style={{
               fontSize: 'inherit',
               float: 'left',
+              minWidth: '100%',
             }}
           >
             {tokens.map(
