@@ -229,22 +229,10 @@ const Flex = styled.div`
   flex-flow: column nowrap;
 `;
 
-const slideIn = keyframes`
-  from {
-    transform: translateY(30%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
 const Content = styled.main`
   flex: 1 1 auto;
   padding: ${spacing(2)};
   ${container};
-  animation: ${slideIn} 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
 `;
 
 const Footer = styled.footer`
