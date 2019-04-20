@@ -612,3 +612,8 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+button {
+  touch-action: manipulation;
+  user-select: none;
+}
