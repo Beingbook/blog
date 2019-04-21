@@ -5,6 +5,11 @@ module.exports = {
     title: `Beingbook`,
     description: `About frontend engineering.`,
     author: `BaHwan Han <beingbook@gmail.com>`,
+    siteUrl: 'https://blog.beingbook.dev',
+    social: {
+      twitter: 'beingbook',
+      github: 'Beingbook',
+    },
   },
   plugins: [
     {
