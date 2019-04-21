@@ -14,6 +14,9 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+            frontmatter {
+              status
+            }
           }
         }
       }
@@ -25,6 +28,9 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   result.data.allMdx.edges.forEach(({ node }) => {
+    if (node.frontmatter.status !== 'published') {
+      return;
+    }
     createPage({
       path: node.fields.slug,
       component: require.resolve(`./src/components/ArticleLayout`),
