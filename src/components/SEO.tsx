@@ -68,7 +68,7 @@ const SEO: React.FC<Props> = ({
           content: `website`,
         },
         {
-          name: 'og:url',
+          property: 'og:url',
           content: `${site.siteMetadata.siteUrl}${slug}`,
         },
         {
