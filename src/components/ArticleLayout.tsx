@@ -24,6 +24,9 @@ interface Props {
   data: {
     mdx: {
       id: string;
+      fields: {
+        slug: string;
+      };
       frontmatter: {
         title: string;
         description: string;
@@ -45,7 +48,7 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
         blockquote: Blockquote,
       }}
     >
-      <SEO description={description} title={title} />
+      <SEO description={description} title={title} slug={mdx.fields.slug} />
       <GlobalStyle />
       <article>
         <Header>
@@ -131,6 +134,9 @@ export const pageQuery = graphql`
   query PostQuery($id: String) {
     mdx(id: { eq: $id }) {
       id
+      fields {
+        slug
+      }
       frontmatter {
         title
         description

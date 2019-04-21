@@ -15,6 +15,7 @@ interface Props {
   meta?: any[];
   keywords?: string[];
   title?: string;
+  slug?: string;
 }
 
 const SEO: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const SEO: React.FC<Props> = ({
   meta = [],
   keywords = [],
   title,
+  slug = '',
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -32,6 +34,7 @@ const SEO: React.FC<Props> = ({
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -63,6 +66,10 @@ const SEO: React.FC<Props> = ({
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          name: 'og:url',
+          content: `${site.siteMetadata.siteUrl}${slug}`,
         },
         {
           name: `twitter:card`,
