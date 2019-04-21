@@ -15,6 +15,7 @@ import {
   Headline5,
   Headline6,
   mdComponents,
+  Body1,
 } from './Typography';
 import { spacing } from '../styled/utils';
 import CodeBlock from './CodeBlock';
@@ -46,16 +47,27 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
     >
       <SEO description={description} title={title} />
       <GlobalStyle />
-      <Header>
-        <Wrapper>
-          <Headline1>{title}</Headline1>
-        </Wrapper>
-      </Header>
-      <Main>
-        <Wrapper>
-          <MDXRenderer>{mdx.code.body}</MDXRenderer>
-        </Wrapper>
-      </Main>
+      <article>
+        <Header>
+          <Wrapper>
+            <Headline1>{title}</Headline1>
+          </Wrapper>
+        </Header>
+        <Main>
+          <Wrapper>
+            <MDXRenderer>{mdx.code.body}</MDXRenderer>
+          </Wrapper>
+        </Main>
+        <footer>
+          <Body1>이 글이 도움이 되었으면 좋겠습니다. 😎</Body1>
+          <Body1>
+            잘못된 정보나 오타가 있다면{' '}
+            <a href="https://github.com/beingbook/blog/issues">Github</a> 또는{' '}
+            <a href="https://twitter.com/beingbook">Twitter</a>로 제보해주세요.
+            최대한 빠르게 반영하도록 하겠습니다.
+          </Body1>
+        </footer>
+      </article>
     </MDXProvider>
   );
 };

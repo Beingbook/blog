@@ -588,7 +588,7 @@ td:last-child {
 }
 tt,
 code {
-  background-color: rgba(0, 47, 255, 0.2);
+  /* background-color: rgba(0, 47, 255, 0.2); */
   border-radius: 3px;
   font-family: 'SFMono-Regular', Consolas, 'Roboto Mono', 'Droid Sans Mono',
     'Liberation Mono', Menlo, Courier, monospace;
