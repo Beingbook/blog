@@ -38,10 +38,13 @@ const StatefulComponent = () => {
 
 위 코드에서 사용된 `React.useState` 함수는 초기 상태값`your input`을 받고
 상태(`state`)와 상태를 갱신하는 함수(`setState`)의 쌍을 반환합니다.
-(React 코드 내부적으로는 `setState`의 이름을 `dispatch`라고 부릅니다.)
 
 `setState`를 실행하면 인자로 전달된 값이 다음 상태가 됩니다.
 상태가 갱신되면 컴포넌트는 다시 렌더링됩니다.
+
+`useState`는 내부적으로 React Hook 연결리스트에
+[새로운 Hook 노드를 추가](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.js#L521)하거나
+[기존 Hook 노드를 갱신](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.js#L793)하는 역할을 수행합니다.
 
 ### 상태 초기화
 
@@ -158,3 +161,4 @@ const correctState = updateQueue2.reduce(dispatchActions, 100);
 1. 비싼 연산의 경우 값 대신 함수로 분리하여 매 렌더링마다 발생하는 비용 줄일 수 있습니다.
 2. React는 상태변화를 즉각적으로 만들지 않고 큐에 쌓아놓고 일괄적으로 처리합니다.
 3. `setState`에 값을 넘기는 대신 함수를 넘겨 일괄처리에서 원자성을 보장할 수 있습니다.
+4. React 내부에는 상태관리를 위해 연결리스트를 사용합니다.
