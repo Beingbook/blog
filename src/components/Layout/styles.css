@@ -596,6 +596,8 @@ code {
 }
 pre code {
   background: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 tt:before,
 tt:after {
