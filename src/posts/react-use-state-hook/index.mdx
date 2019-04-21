@@ -5,7 +5,7 @@ createdAt: 2019-04-16
 status: published
 ---
 
-React Hook이 등장한지 1분기가 넘어 갔습니다.
+React Hook 정식 릴리즈 한 뒤 1분기가 지나갑니다.
 아주 편리하고 매혹적인 기능입니다.
 상태 로직을 컴포넌트 라이프사이클에 걸쳐 추상화할 수 있게 되면서
 클래스 컴포넌트에 비해 상대적으로 컴포넌트의 멱등성을 만족하기 쉬워졌습니다.
@@ -14,7 +14,6 @@ React Hook이 등장한지 1분기가 넘어 갔습니다.
 React Hook 출시 이후 프로덕션에서 사용하면서 스스로 혹은 동료가 잘 모르던 부분을 정리한 글입니다.
 
 React Hook 도입을 고려하시거나 React를 입문하신다면 도움이 될 것 같습니다.
-사실 몇가지는 Hook이 아니더라도 발생하는 문제가 포함되어 있습니다.
 
 ## 컴포넌트 상태
 
@@ -36,11 +35,11 @@ const StatefulComponent = () => {
 };
 ```
 
-위 코드에서 사용된 `React.useState` 함수는 초기 상태값`your input`을 받고
+위 코드에서 사용된 `React.useState` 함수는 초기 상태 값`your input`을 받고
 상태(`state`)와 상태를 갱신하는 함수(`setState`)의 쌍을 반환합니다.
 
 `setState`를 실행하면 인자로 전달된 값이 다음 상태가 됩니다.
-상태가 갱신되면 컴포넌트는 다시 렌더링됩니다.
+상태가 갱신되면 컴포넌트는 다시 렌더링 됩니다.
 
 `useState`는 내부적으로 React Hook 연결리스트에
 [새로운 Hook 노드를 추가](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.js#L521)하거나
@@ -76,11 +75,11 @@ const Component = () => {
 ```
 
 모든 상태 초기화를 함수로 할 필요는 없습니다.
-성능에 크리티컬한 부분에서만 사용하면 됩니다.
+성능에 치명적인 부분에서 사용하면 됩니다.
 
 ## 일괄 상태 갱신
 
-React가 컴포넌트를 렌더링하는 동안 `setState`를 호출하더라도 상태를 즉시 바꾸진 않습니다.
+React가 컴포넌트를 렌더링 하는 동안 `setState`를 호출하더라도 상태를 즉시 바꾸진 않습니다.
 `setState`를 호출하면 일어나는 일은 다음과 같습니다.
 
 1. [`setState`에 전달된 인자를 액션 큐에 저장합니다.](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.js#L1344)
@@ -154,11 +153,11 @@ const correctState = updateQueue2.reduce(dispatchActions, 100);
 ```
 
 [실제 React Action 큐](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.js#L1060)는
-단순한 배열 대신에 연결리스트를 사용하여 구현되어 있습니다.
+단순한 배열 대신에 연결 리스트를 사용하여 구현되어 있습니다.
 
 ## 정리
 
 1. 비싼 연산의 경우 값 대신 함수로 분리하여 매 렌더링마다 발생하는 비용 줄일 수 있습니다.
 2. React는 상태변화를 즉각적으로 만들지 않고 큐에 쌓아놓고 일괄적으로 처리합니다.
 3. `setState`에 값을 넘기는 대신 함수를 넘겨 일괄처리에서 원자성을 보장할 수 있습니다.
-4. React 내부에는 상태관리를 위해 연결리스트를 사용합니다.
+4. React 내부에는 상태 관리를 위해 연결 리스트를 사용합니다.
