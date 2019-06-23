@@ -1,0 +1,22 @@
+## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/ 
+
+[build]
+  command = "yarn test && yarn build"
+  publish = "build"
+
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# [[headers]]
+#   for = "/service-worker.js"
+#   [headers.values]
+#     cache-control = "max-age=0, no-cache, no-store, must-revalidate"
+
+## (optional) Settings for Netlify Dev
+## https://github.com/netlify/netlify-dev-plugin#project-detection
+# [dev]
+#   command = "yarn start" # Command to start your dev server
+#   port = 3000 # Port that the dev server will be listening on
+#   publish = "dist" # Folder with the static content for _redirect file
