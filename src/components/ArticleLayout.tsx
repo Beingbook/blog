@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 // @ts-ignore
-import { MDXRenderer } from 'gatsby-mdx';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 // @ts-ignore
 import { MDXProvider } from '@mdx-js/react';
 import styled, { createGlobalStyle } from 'styled-components';
@@ -31,9 +31,7 @@ interface Props {
         title: string;
         description: string;
       };
-      code: {
-        body: string;
-      };
+      body: string;
     };
   };
 }
@@ -58,7 +56,7 @@ const ArticleLayout: React.FC<Props> = ({ data: { mdx } }) => {
         </Header>
         <Main>
           <Wrapper>
-            <MDXRenderer>{mdx.code.body}</MDXRenderer>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
           </Wrapper>
         </Main>
         <footer>
@@ -141,9 +139,7 @@ export const pageQuery = graphql`
         title
         description
       }
-      code {
-        body
-      }
+      body
     }
   }
 `;
