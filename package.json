@@ -13,7 +13,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "@mdx-js/mdx": "1.0.14",
+    "@mdx-js/mdx": "1.0.23",
     "@mdx-js/react": "1.0.22",
     "@types/parse-numeric-range": "^0.0.0",
     "@types/react-helmet": "^5.0.8",
