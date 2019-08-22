@@ -1,8 +1,8 @@
 ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/ 
 
 [build]
-  command = "yarn test && yarn build"
-  publish = "build"
+  command = "yarn gatsby:build"
+  publish = "public"
 
 # [[redirects]]
 #   from = "/*"
