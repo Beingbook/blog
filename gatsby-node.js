@@ -2,7 +2,7 @@ require('ts-node').register();
 
 const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.createPages = async ({ graphql, actions }) => {
+module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
@@ -41,14 +41,14 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+module.exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'Mdx') {
     const value = createFilePath({
       node,
       getNode,
-      trailingSlash: true,
+      trailingSlash: false,
     });
 
     createNodeField({

@@ -2,7 +2,6 @@ import React from 'react';
 import styled, {
   ThemeProvider,
   createGlobalStyle,
-  keyframes,
   css,
 } from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -13,41 +12,22 @@ import SEO from '../SEO';
 import './fonts.css';
 import './styles.css';
 
-import { darkTheme, whiteTheme } from '../../styled/theme';
+import { darkTheme } from '../../styled/theme';
 import { Body2, ButtonText } from '../Typography';
 import { spacing, halfSpacing } from '../../styled/utils';
-import useInputState from '../../hooks/useInputState';
 import HomeIcon from './HomeIcon';
 import { container } from '../../styled/common';
-import MoonIcon from './MoonIcon';
-import SunIcon from './SunIcon';
+
 
 interface Props {
   location?: Location;
 }
+
 const Layout: React.FC<Props> = (props) => {
   const { children, location } = props;
-  const [
-    preferDarkColor,
-    preferDarkColorHandler,
-    setPreferredColor,
-  ] = useInputState<boolean | null>(null);
-  React.useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      const cache = localStorage.getItem('preferDarkColor');
-      const value = cache ? JSON.parse(cache) : null;
-      if (typeof value === 'boolean') {
-        setPreferredColor(value);
-      } else {
-        setPreferredColor(false);
-      }
-    }
-  }, []);
-  React.useEffect(() => {
-    localStorage.setItem('preferDarkColor', JSON.stringify(preferDarkColor));
-  }, [preferDarkColor]);
+
   return (
-    <ThemeProvider theme={preferDarkColor ? darkTheme : whiteTheme}>
+    <ThemeProvider theme={darkTheme}>
       <>
         <GlobalStyle />
         <Helmet htmlAttributes={{ lang: 'ko' }} />
@@ -64,23 +44,6 @@ const Layout: React.FC<Props> = (props) => {
                   </MenuLink>
                 </li>
               </PrimaryMenu>
-              <Menu>
-                {preferDarkColor !== null && (
-                  <li role="presentation" aria-hidden>
-                    <ToggleLabel role="button">
-                      <input
-                        type="checkbox"
-                        checked={preferDarkColor}
-                        onChange={preferDarkColorHandler}
-                      />
-                      <ButtonText>
-                        {preferDarkColor ? '어스름' : '빛벼림'}
-                      </ButtonText>
-                      {preferDarkColor ? <MoonIcon /> : <SunIcon />}
-                    </ToggleLabel>
-                  </li>
-                )}
-              </Menu>
             </Nav>
           </Header>
           <Content key={location && location.pathname}>{children}</Content>
@@ -148,41 +111,6 @@ const GlobalStyle = createGlobalStyle`
       }
       transition: color 0.2s ${theme.easing.standard};
     `}
-  }
-`;
-
-const ToggleLabel = styled.label`
-  position: relative;
-  cursor: pointer;
-  padding: ${spacing(2)};
-  display: inline-flex;
-  align-items: center;
-  transition: opacity 0.1s ${({ theme }) => theme.easing.standard};
-  touch-action: manipulation;
-  user-select: none;
-
-  svg {
-    margin: 0;
-    margin-left: ${halfSpacing(2)};
-    padding: 0;
-    transform: rotate(0deg);
-    transition: transform 0.1s ${({ theme }) => theme.easing.standard};
-  }
-
-  &:hover {
-    img {
-      transform: rotate(20deg);
-    }
-  }
-
-  input {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-
-    &:focus ~ img {
-      transform: rotate(20deg);
-    }
   }
 `;
 

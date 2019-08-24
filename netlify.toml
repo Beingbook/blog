@@ -4,15 +4,15 @@
   command = "yarn gatsby:build"
   publish = "public"
 
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
-# [[headers]]
-#   for = "/service-worker.js"
-#   [headers.values]
-#     cache-control = "max-age=0, no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 ## (optional) Settings for Netlify Dev
 ## https://github.com/netlify/netlify-dev-plugin#project-detection
