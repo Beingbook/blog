@@ -1645,10 +1645,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.10.5.tgz#6831006b2c87441d69e79b37ae9bc03246dfb379"
   integrity sha512-RYkagUUbxQBss46ElbEa+j4q4X3GR12QwB7a/PM5hmVuVkYoW1jENT1+taspKUv8ibwW8cw+kRFbOaTc/Key3w==
 
-"@types/parse-numeric-range@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@types/parse-numeric-range/-/parse-numeric-range-0.0.0.tgz#f124f93504c9cbf836a24cc7402b3d2046daa4f8"
-  integrity sha512-aIyjtJuoj7QsKd3REBrOevUSne9GVlYfFVzLuFjZ+pRFcr+3YS+9YL13rPvZUYb5zE5VaQpCA8YPgQ2oZui4RA==
+"@types/parse-numeric-range@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@types/parse-numeric-range/-/parse-numeric-range-0.0.1.tgz#1a807487565a753f486cb3ee4b2145937d49759d"
+  integrity sha512-nI3rPGKk8BxedokP2VilnW5JyZHYNjGCUDsAZ2JQgISgDflHNUO0wXMfGYP8CkihrKYDm5tilD52XfGhO/ZFCA==
 
 "@types/prop-types@*":
   version "15.7.0"
