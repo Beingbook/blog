@@ -1,3 +1,6 @@
+require("prismjs/themes/prism-okaidia.css");
+require("prismjs/plugins/line-numbers/prism-line-numbers.css");
+
 const React = require("react");
 
 const PostListLayout = require("./src/components/PostListLayout").default;
