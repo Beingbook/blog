@@ -22,8 +22,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Helmet>
+        <link href="//fonts.gstatic.com" rel="preconnect" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"
+          href="//fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"
           rel="stylesheet"
         />
       </Helmet>
