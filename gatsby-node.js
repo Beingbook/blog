@@ -19,26 +19,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
+  const topics = ["tech", "life"];
   createPage({
     path: "/",
     component: require.resolve("./src/components/HomePage"),
     context: {
-      topic: "**/*",
+      topic: `/{${topics.join(",")}}/*`,
     },
   });
-  createPage({
-    path: "/tech",
-    component: require.resolve("./src/components/HomePage"),
-    context: {
-      topic: "/tech/**",
-    },
-  });
-  createPage({
-    path: "/life",
-    component: require.resolve("./src/components/HomePage"),
-    context: {
-      topic: "/life/**",
-    },
+  topics.forEach(topic => {
+    createPage({
+      path: `/${topic}`,
+      component: require.resolve("./src/components/HomePage"),
+      context: {
+        topic: `/${topic}/**`,
+      },
+    });
   });
 
   const result = await graphql(`
