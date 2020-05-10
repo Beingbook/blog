@@ -49,6 +49,19 @@ module.exports = {
               maxWidth: 640,
             },
           },
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              inlineCodeMarker: "÷",
+            },
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "noopener",
+            },
+          },
         ],
       },
     },
