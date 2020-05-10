@@ -21,13 +21,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Helmet>
-        <link href="//fonts.gstatic.com" rel="preconnect" />
-        <link
-          href="//fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className={styles.wrapper}>
         <main>{children}</main>
