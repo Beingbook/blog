@@ -1,3 +1,17 @@
+:root {
+  --background-color: #fff;
+  --text-color: #222;
+  --primary-text-color: rgb(140, 158, 255);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: rgb(40, 44, 53);
+    --text-color: #fff;
+    --primary-text-color: rgb(140, 158, 255);
+  }
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7,6 +21,21 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+  font-family: georgia, serif;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Noto Sans KR", sans-serif;
+}
+a {
+  color: var(--primary-text-color);
 }
 article,
 aside,
@@ -197,17 +226,6 @@ html {
 }
 *:after {
   box-sizing: inherit;
-}
-body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
 }
 img {
   max-width: 100%;

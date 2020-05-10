@@ -1,7 +1,10 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+const React = require("react");
 
-// You can delete this file if you're not using it
+const PostListLayout = require("./src/components/PostListLayout").default;
+
+exports.wrapPageElement = ({ element, props }) => {
+  if (["/", "/tech", "/life"].includes(props.location.pathname)) {
+    return <PostListLayout>{element}</PostListLayout>;
+  }
+  return <>{element}</>;
+};

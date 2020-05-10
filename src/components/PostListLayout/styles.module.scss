@@ -1,0 +1,27 @@
+.topic {
+  margin-bottom: 12px;
+
+  ul {
+    display: flex;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.05rem;
+
+    a {
+      padding: 4px 12px;
+      text-decoration: none;
+
+      &.activeTopic {
+        text-decoration: underline;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+}
