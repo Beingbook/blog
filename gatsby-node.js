@@ -3,7 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 const removeTrailingSlash = path =>
   path === `/` ? path : path.replace(/\/$/, ``);
 
-export const onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
     const slug = removeTrailingSlash(
@@ -17,7 +17,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-export const createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const topics = ["tech", "life"];
   createPage({
@@ -69,7 +69,7 @@ export const createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
-export const onCreatePage = ({ page, actions }) => {
+exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
   const oldPage = Object.assign({}, page);
   // Remove trailing slash unless page is /
