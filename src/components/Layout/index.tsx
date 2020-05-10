@@ -26,6 +26,7 @@ const Layout = ({ children }) => {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="naver-site-verification" content="cc3591dced4805b55c5b45c6663a5015537a63d0" />
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className={styles.wrapper}>
