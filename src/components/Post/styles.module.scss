@@ -24,14 +24,13 @@
 
     ul,
     ol {
-      padding: 0;
-      padding-left: 16px;
       margin: 0;
+      padding-left: 1.5rem;
 
       li {
         line-height: 1.5;
         &:not(:last-child) {
-          margin-bottom: 4px;
+          margin-bottom: 0.2em;
         }
       }
     }
