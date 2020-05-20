@@ -14,7 +14,7 @@
   "dependencies": {
     "@material-ui/icons": "^4.9.1",
     "@mdx-js/mdx": "^1.6.1",
-    "@mdx-js/react": "^1.6.1",
+    "@mdx-js/react": "^1.6.2",
     "@types/react-helmet": "^5.0.15",
     "cross-env": "^7.0.2",
     "gatsby": "^2.21.21",
